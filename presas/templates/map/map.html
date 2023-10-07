@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mapa</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+    <style>
+        #map {
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <label for="poligono-select">Seleccionar polígono:</label>
+        <select id="poligono-select">
+            {% for poligono in poligonos %}
+            <option value="{{ poligono.id }}">{{ poligono.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div id="map"></div>
+
+
+    <script>
+        // Crea el mapa y establece las coordenadas iniciales
+        var map = L.map('map').setView([0, 0], 2);
+
+        // Agrega una capa de mosaicos de OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Recupera los polígonos pasados desde la vista
+        var poligonos = {
+        {% for poligono in poligonos %}
+        "{{ poligono.id }}": {{ poligono.mpoly.geojson|safe }},
+        {% endfor %}
+        };
+
+        // Agrega la capa del MultiPolygon seleccionado al mapa
+        function cargarPoligono(poligonoId) {
+            map.eachLayer(function (layer) {
+                if (layer instanceof L.GeoJSON) {
+                    map.removeLayer(layer);
+                }
+            });
+
+            layer = L.geoJSON(poligonos[poligonoId]).addTo(map);
+            map.fitBounds(layer.getBounds());
+        }
+
+        // Maneja el evento de cambio en el ComboBox
+        var poligonoSelect = document.getElementById('poligono-select');
+        poligonoSelect.addEventListener('change', function () {
+            var poligonoId = poligonoSelect.value;
+            cargarPoligono(poligonoId);
+        });
+
+        // Carga el polígono inicialmente seleccionado
+        var poligonoId = poligonoSelect.value;
+        cargarPoligono(poligonoId);
+    </script>
+</body>
+
+</html>
