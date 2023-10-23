@@ -1,0 +1,66 @@
+<!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
+<qgis version="3.22.4-Białowieża">
+  <identifier>historico_fugas_ap_2007_2015</identifier>
+  <parentidentifier></parentidentifier>
+  <language>SPA</language>
+  <type>dataset</type>
+  <title>Histórico de fugas de agua 2007 - 2015</title>
+  <abstract>Contiene el registro del histórico de fugas de agua del periodo 2007 - 2015 en la Ciudad de México, por puntos con datos de alcaldía, año y nombre de vialidades
+
+Histórico fugas 2007 - 2015 en la Ciudad de México</abstract>
+  <keywords vocabulary="gmd:topicCategory">
+    <keyword>Gestión sustentable del agua</keyword>
+  </keywords>
+  <contact>
+    <contactAddress>
+      <type>physical</type>
+      <address>C. Contoy 137, Col. Lomas de Padierna, Alcaldía Tlalpan</address>
+      <city>Ciudad de México</city>
+      <administrativearea>Ciudad de México</administrativearea>
+      <postalcode>14240</postalcode>
+      <country>MX</country>
+    </contactAddress>
+    <name>Centro de Investigación en Ciencias de Información Geoespacial (CentroGeo)</name>
+    <organization>CONACYT </organization>
+    <position></position>
+    <voice>55 2615 2508</voice>
+    <fax></fax>
+    <email></email>
+    <role></role>
+  </contact>
+  <links/>
+  <history>Se originó a paritr de información de gabinete </history>
+  <history>Fuente de datos: SACMEX 2015</history>
+  <fees></fees>
+  <rights>Insumo para el desarrollo de instrumentos de planeación en colaboración del Gobierno de la Ciudad de México y Centro Geo, 2020-2021&#xd;
+</rights>
+  <encoding></encoding>
+  <crs>
+    <spatialrefsys>
+      <wkt>PROJCRS["WGS 84 / UTM zone 14N",BASEGEOGCRS["WGS 84",ENSEMBLE["World Geodetic System 1984 ensemble",MEMBER["World Geodetic System 1984 (Transit)"],MEMBER["World Geodetic System 1984 (G730)"],MEMBER["World Geodetic System 1984 (G873)"],MEMBER["World Geodetic System 1984 (G1150)"],MEMBER["World Geodetic System 1984 (G1674)"],MEMBER["World Geodetic System 1984 (G1762)"],MEMBER["World Geodetic System 1984 (G2139)"],ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]],ENSEMBLEACCURACY[2.0]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],ID["EPSG",4326]],CONVERSION["UTM zone 14N",METHOD["Transverse Mercator",ID["EPSG",9807]],PARAMETER["Latitude of natural origin",0,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8801]],PARAMETER["Longitude of natural origin",-99,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8802]],PARAMETER["Scale factor at natural origin",0.9996,SCALEUNIT["unity",1],ID["EPSG",8805]],PARAMETER["False easting",500000,LENGTHUNIT["metre",1],ID["EPSG",8806]],PARAMETER["False northing",0,LENGTHUNIT["metre",1],ID["EPSG",8807]]],CS[Cartesian,2],AXIS["(E)",east,ORDER[1],LENGTHUNIT["metre",1]],AXIS["(N)",north,ORDER[2],LENGTHUNIT["metre",1]],USAGE[SCOPE["Engineering survey, topographic mapping."],AREA["Between 102°W and 96°W, northern hemisphere between equator and 84°N, onshore and offshore. Canada - Manitoba; Nunavut; Saskatchewan. Mexico. United States (USA)."],BBOX[0,-102,84,-96]],ID["EPSG",32614]]</wkt>
+      <proj4>+proj=utm +zone=14 +datum=WGS84 +units=m +no_defs</proj4>
+      <srsid>3098</srsid>
+      <srid>32614</srid>
+      <authid>EPSG:32614</authid>
+      <description>WGS 84 / UTM zone 14N</description>
+      <projectionacronym>utm</projectionacronym>
+      <ellipsoidacronym>EPSG:7030</ellipsoidacronym>
+      <geographicflag>false</geographicflag>
+    </spatialrefsys>
+  </crs>
+  <extent>
+    <spatial crs="EPSG:32614" miny="19.17318600000000117" minx="-99.3345989999999972" minz="0" dimensions="2" maxy="19.57769400000000104" maxz="0" maxx="-98.95681399999999428"/>
+    <temporal>
+      <period>
+        <start>2021-03-22T06:00:00Z</start>
+        <end></end>
+      </period>
+    </temporal>
+    <temporal>
+      <period>
+        <start></start>
+        <end></end>
+      </period>
+    </temporal>
+  </extent>
+</qgis>

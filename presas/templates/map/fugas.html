@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapa de Historico de Fugas</title>
+    <!-- Incluir las bibliotecas de Leaflet y otros recursos aquí -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #map {
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mapa de Historico de Fugas</h1>
+    
+    <select id="alcaldia-select">
+        <option value="">Selecciona una alcaldía</option>
+        {% for alcaldia in alcaldias %}
+            <option value="{{ alcaldia.alcaldia }}">{{ alcaldia.alcaldia }}</option>
+        {% endfor %}
+    </select>
+    
+    <div id="map"></div>
+    
+    <script>
+        // Inicializar el mapa Leaflet aquí
+        var map = L.map('map').setView([0, 0], 10); // Configura la ubicación y el zoom inicial
+        
+        // Agregar capas base de OpenStreetMap y Bing Maps aquí
+
+        // Agrega una capa de mosaicos de OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        
+        // Manejar eventos de cambio en el combo box para agregar marcadores según la alcaldía seleccionada
+        document.getElementById('alcaldia-select').addEventListener('change', function() {
+            var selectedAlcaldia = this.value;
+            // Realizar una solicitud AJAX para obtener los datos de las fugas de la alcaldía seleccionada
+            // Agregar marcadores al mapa según los datos obtenidos
+        });
+    
+        // Manejar eventos de cambio en el combo box para agregar marcadores según la alcaldía seleccionada
+        document.getElementById('alcaldia-select').addEventListener('change', function() {
+            var selectedAlcaldia = this.value;
+    
+            // Realizar una solicitud AJAX para obtener los datos de las fugas de la alcaldía seleccionada
+            if (selectedAlcaldia) {
+                $.ajax({
+                    type: 'GET',
+                    url: '/ruta-de-tu-vista-ajax/',  // Reemplaza con la URL de tu vista AJAX
+                    data: {alcaldia: selectedAlcaldia},
+                    success: function(data) {
+                        var nuevosMarcadores = L.layerGroup();
+
+                        // Iterar sobre los datos de las fugas y agregar marcadores al grupo de capa
+                        data.forEach(function(fuga) {
+                            var latitud = fuga.latitud;  // Reemplaza 'latitud' con el nombre real de tu campo
+                            var longitud = fuga.longitud;  // Reemplaza 'longitud' con el nombre real de tu campo
+                    
+                            // Crear un marcador y agregarlo al grupo de capa
+                            var marcador = L.marker([latitud, longitud]);
+                            nuevosMarcadores.addLayer(marcador);
+                        });
+                    
+                        // Agregar el grupo de capa con los nuevos marcadores al mapa
+                        nuevosMarcadores.addTo(map);
+                    
+                        // Ajustar la vista del mapa para que se ajuste a los nuevos marcadores
+                        map.fitBounds(nuevosMarcadores.getBounds());
+                    },
+                    error: function(error) {
+                        console.error('Error en la solicitud AJAX:', error);
+                    }
+                });
+            }
+        });
+    </script>
+    
+</body>
+</html>

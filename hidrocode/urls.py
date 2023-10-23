@@ -16,9 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from presas.views import map_view
+from presas.views import map_view, mapa_fugas, obtener_datos_fugas
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("map/", map_view, name="map"),
+    path("mapa-fugas/", mapa_fugas, name="mapa_fugas"),
+    path("ruta-de-tu-vista-ajax/", obtener_datos_fugas, name="obtener_datos_fugas"),
 ]

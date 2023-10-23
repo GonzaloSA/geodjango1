@@ -26,3 +26,24 @@ class WorldBorder(models.Model):
     # Returns the string representation of the model.
     def __str__(self):
         return self.name
+
+
+class HistoricoFugas(models.Model):
+    anio = models.IntegerField()
+    alcaldia = models.CharField(max_length=255)
+    diam_pulg = models.IntegerField()
+    entidad = models.IntegerField()
+    minicipio = models.IntegerField()
+    nombre = models.CharField(max_length=255)
+    cp = models.IntegerField()
+    otros_cp = models.CharField(max_length=255, null=True, blank=True)
+    nomvial = models.CharField(max_length=255)
+    mpoint = models.MultiPointField()
+
+    @property
+    def coordenadas_list(self):
+        return [[point.x, point.y] for point in self.mpoint]
+
+    # Returns the string representation of the model.
+    def __str__(self):
+        return self.nombre

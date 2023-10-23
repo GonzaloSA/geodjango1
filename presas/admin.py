@@ -8,4 +8,11 @@ class adminWorld(admin.ModelAdmin):
     search_fields = ["name"]
 
 
+class adminFugas(admin.ModelAdmin):
+    model = HistoricoFugas
+    list_display = ("alcaldia", "entidad")
+    search_fields = ["alcaldia"]
+
+
 admin.site.register(WorldBorder, adminWorld)
+admin.site.register(HistoricoFugas, adminFugas)

@@ -5,6 +5,7 @@
     <title>Mapa</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+
     <style>
         #map {
             height: 400px;
@@ -63,6 +64,7 @@
         // Carga el polígono inicialmente seleccionado
         var poligonoId = poligonoSelect.value;
         cargarPoligono(poligonoId);
+        console.log(poligonos);
     </script>
 </body>
 
